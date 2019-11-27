@@ -23,7 +23,7 @@ public class Lixeira{
         i.setQtdAtual(qtdAtual);
 
         Console.WriteLine("\nItem: " + i.getNome() + "\nQuantidade jogada no lixo: " + qtdLixeira);
-        lista.Add(new Item() {nome = i.getNome(), qtdMin = i.getQtdMin(), qtdAtual = qtdAtual});
+        lista.Add(new Item(i.getNome(), i.getQtdMin(), qtdAtual));
       }
       else{
         qtdLixeira = qtdAtual;
@@ -31,7 +31,7 @@ public class Lixeira{
         i.setQtdAtual(qtdAtual);
 
         Console.WriteLine("\nItem: " + i.getNome() + "\nQuantidade jogada no lixo: " + qtdLixeira);
-        lista.Add(new Item() {nome = i.getNome(), qtdMin = i.getQtdMin(), qtdAtual = qtdAtual});
+        lista.Add(new Item(i.getNome(), i.getQtdMin(), qtdAtual));
       }
     }
     

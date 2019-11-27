@@ -39,7 +39,7 @@ public class Armario{
 
           qtdAtualAux = int.Parse(str2);
           
-          itens.Add(new Item() {nome = nomeAux, qtdMin = qtdMinAux, qtdAtual = qtdAtualAux});
+          itens.Add(new Item(nomeAux, qtdMinAux, qtdAtualAux));
         }
       }
       sr.Close();
@@ -90,13 +90,13 @@ public class Armario{
 
             i.setQtdAtual(qtdAtualAux);
             sw.WriteLine(qtdAtualAux);
-            lis.Add(new Item() {nome = i.getNome(), qtdMin = qtdMinAux, qtdAtual = qtdAtualAux});
+            lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
             Console.WriteLine("Quantidade comprada com sucesso!");
             Console.WriteLine(i);
           }
           else{
             sw.WriteLine(qtdAtualAux);
-            lis.Add(new Item() {nome = i.getNome(), qtdMin = qtdMinAux, qtdAtual = qtdAtualAux});
+            lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
             Console.WriteLine("Esse item não tera reposição!");
           }
         }
