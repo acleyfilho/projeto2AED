@@ -22,21 +22,27 @@ public class Lixeira{
         qtdAtual = qtdAtual - qtdLixeira;
         i.setQtdAtual(qtdAtual);
 
-        Console.WriteLine("\nItem: " + i.getNome() + "\nQuantidade jogada no lixo: " + qtdLixeira);
+        Console.WriteLine("\nItem: " + i.getNome() + "\nQuantidade jogada no lixo: " + qtdLixeira +"\nQuantidade atual: " + qtdAtual);
         lista.Add(new Item(i.getNome(), i.getQtdMin(), qtdAtual));
       }
       else{
         qtdLixeira = qtdAtual;
-        qtdAtual = qtdAtual - qtdLixeira;
-        i.setQtdAtual(qtdAtual);
+        if(qtdAtual > 0){
+          qtdAtual = qtdAtual - qtdLixeira;
+          i.setQtdAtual(qtdAtual);
 
-        Console.WriteLine("\nItem: " + i.getNome() + "\nQuantidade jogada no lixo: " + qtdLixeira);
-        lista.Add(new Item(i.getNome(), i.getQtdMin(), qtdAtual));
+          Console.WriteLine("\nItem: " + i.getNome() + "\nQuantidade jogada no lixo: " + qtdLixeira +"\nQuantidade atual: " + qtdAtual);
+          lista.Add(new Item(i.getNome(), i.getQtdMin(), qtdAtual = qtdAtual));
+        }
+        else{
+          Console.WriteLine("\nItem: " + i.getNome() + "\nQuantidade jogada no lixo: " + qtdLixeira +"\nQuantidade atual: " + qtdAtual);
+          lista.Add(new Item(i.getNome(), i.getQtdMin(), qtdAtual = qtdAtual));
+        } 
       }
     }
-    
-    if(File.Exists("itens.txt") && File.Exists("qtdAtual.txt")){
 
+    if(File.Exists("itens.txt") && File.Exists("qtdAtual.txt")){
+      
       File.Delete("qtdAtual.txt");
 
       StreamWriter sw = new StreamWriter("qtdAtual.txt", true);

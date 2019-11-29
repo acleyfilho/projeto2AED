@@ -4,108 +4,36 @@ using System.Text;
 
 class MainClass {
   public static void Main (string[] args) {
-
-     Console.Clear();
-
-    //Menu de login 
-    string menuLogin;
-    bool telaLogin = true;
-
-    while(telaLogin == true){
-
-      Console.WriteLine(" ");
-
-      Console.WriteLine("╔═════════════MENU DE OPÇÕES═════════════╗    ");
-
-      Console.WriteLine("║ 1 - ENTRAR NO APP                      ║    ");
-
-      Console.WriteLine("║                                        ║    ");
-
-      Console.WriteLine("║ 2 - FAZER CADASTRO                     ║    ");
-
-      Console.WriteLine("║                                        ║    ");
-
-      Console.WriteLine("║ 3 - FECHAR                             ║    ");
-
-      Console.WriteLine("╚════════════════════════════════════════╝    ");
-
-      Console.WriteLine(" ");
-
-      Console.Write("Escolha uma opção: ");
-
-      menuLogin = Console.ReadLine();
-      Console.Clear();
-      Console.WriteLine(" ");
-
-      //Opções do menu
-      switch(menuLogin){
-
-        //Fazer login
-        case "1":
-        break;
-
-        //Cadastro da pessoa
-        case "2":
-        string nome;
-        string nomeDeUsuario;
-        string nomeDaPasta;
-        string senha;
-        string telefone;
-        string email;
-        string caminhoBD;
-
-        Console.WriteLine("CADASTRO DE USUARIO\n");
-
-        Console.WriteLine("Digite seu nome: ");
-        nome = Console.ReadLine();
-
-        Console.WriteLine("Digite o seu nome de usuario: ");
-        nomeDeUsuario = Console.ReadLine();
-
-        Console.WriteLine("Digite sua senha: ");
-        senha = Console.ReadLine();
-
-        Console.WriteLine("Digite seu telefone: ");
-        telefone = Console.ReadLine();
-
-        Console.WriteLine("Digite seu email: ");
-        email = Console.ReadLine();
-
-        nomeDaPasta = "BD " + nomeDeUsuario;
-
-        caminhoBD = ".//"+ nomeDaPasta +"//";
-
-        //Cria a pasta para salvar os arquivos da conta.
-        DirectoryInfo di = Directory.CreateDirectory(nomeDaPasta);
-
-        StreamWriter sw = new StreamWriter(caminhoBD + "dados.txt", true);
-
-        sw.WriteLine(nome+"\n"+nomeDeUsuario+"\n"+senha+"\n"+telefone+"\n"+email+"\n"+caminhoBD);
-
-        sw.Close();
-
-        Pessoa cadastro = new Pessoa(nome, nomeDeUsuario, senha, telefone, email, caminhoBD);
-        break;
-
-        //Fecha o app
-        case "3":
-        telaLogin = false;
-        break;
-
-        //Caso não seja nenhuma das opções acima
-        default:
-        Console.WriteLine("Opção invalida...");
-        break;
-      }
-    }  
-
+    
     Console.Clear();
 
-    //Menu do usuario
+    //Cadastro da pessoa
+    string nome;
+    string senha;
+    string telefone;
+    string email;
+
+    Console.WriteLine("CADASTRO INICIAL\n");
+
+    Console.WriteLine("Digite seu nome: ");
+    nome = Console.ReadLine();
+
+    Console.WriteLine("Digite sua senha: ");
+    senha = Console.ReadLine();
+
+    Console.WriteLine("Digite seu telefone: ");
+    telefone = Console.ReadLine();
+
+    Console.WriteLine("Digite seu email: ");
+    email = Console.ReadLine();
+
+    Pessoa cadastro = new Pessoa(nome, senha, telefone, email);
+    Console.Clear();
+
+    //Menu
     string menu;
     bool repetir = true;
 
-    
     Armario armario = new Armario();
     Item item = new Item();
     Lixeira lixeira = new Lixeira();
@@ -153,6 +81,7 @@ class MainClass {
 
         //Mostra os dados de cadastro do usuario
         case "1":
+        cadastro.SaidaCadastro(cadastro);
         break;
 
         //Cadastro dos itens
@@ -179,6 +108,7 @@ class MainClass {
         //Sai do programa
         case "6":
         Console.WriteLine("Saindo...");
+        item.DeletarArquivos();
         repetir = false;
         break;
 

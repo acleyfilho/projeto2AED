@@ -3,14 +3,12 @@ using System.IO;
 using System.Text;
 
 public class Item{
-  
+
   private string nome;
   private int qtdMin;
   private int qtdAtual;
 
   Sensor sensor = new Sensor();
-
-  Pessoa pessoa = new Pessoa();
   
   public Item(){
 
@@ -56,11 +54,8 @@ public class Item{
   
   public void EscreverItem(){
 
-    StreamWriter sw = new StreamWriter(".//"+ pessoa.getCaminhoBD() +"//itens.txt", true);
-
-    Console.WriteLine(".//"+ pessoa.getCaminhoBD() +"//itens.txt");
-
-    StreamWriter sw2 = new StreamWriter(".//"+ pessoa.getCaminhoBD() +"//qtdAtual.txt", true);
+    StreamWriter sw = new StreamWriter("itens.txt", true);
+    StreamWriter sw2 = new StreamWriter("qtdAtual.txt", true);
 
     string str = string.Empty;
     string str2 = string.Empty;
@@ -100,9 +95,9 @@ public class Item{
     sw.Close();
     sw2.Close();
   }
-  
-  public void Teste(){
-    
-    Console.WriteLine(".//"+ pessoa.getCaminhoBD() +"//itens.txt");
+
+  public void DeletarArquivos(){
+    File.Delete("itens.txt");
+    File.Delete("qtdAtual.txt");
   }
 }
