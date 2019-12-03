@@ -8,15 +8,13 @@ public class Lixeira{
   Armario armario = new Armario();
 
   List<Item> lista = new List<Item>();
-
-  Sensor sensor = new Sensor();
-
+  
   public void SimularLixeira(){
 
     foreach (Item i in armario.AdicionarItens()){
 
       int qtdAtual = i.getQtdAtual();
-      int qtdLixeira = sensor.leitorLixeira();
+      int qtdLixeira = Sensor.leitorLixeira();
 
       if(qtdAtual >= qtdLixeira){
         qtdAtual = qtdAtual - qtdLixeira;
@@ -49,12 +47,12 @@ public class Lixeira{
 
       int qtdAtualAux; 
 
-        foreach (Item j in lista){
-          qtdAtualAux = j.getQtdAtual();
-          sw.WriteLine(qtdAtualAux);
-        }
-        sw.Close();
-        lista.Clear();
+      foreach (Item j in lista){
+        qtdAtualAux = j.getQtdAtual();
+        sw.WriteLine(qtdAtualAux);
+      }
+      sw.Close();
+      lista.Clear();
     }
   }
 

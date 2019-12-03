@@ -17,7 +17,7 @@ class MainClass {
 
     Console.WriteLine("Digite seu nome: ");
     nome = Console.ReadLine();
-
+  
     Console.WriteLine("Digite sua senha: ");
     senha = Console.ReadLine();
 
@@ -91,13 +91,24 @@ class MainClass {
 
         //Lê uma lista de itens e adciona ao armario
         case "3":
-        armario.AdicionarItens();
-        armario.SaidaLista();
+        try{
+          armario.AdicionarItens();
+          armario.SaidaLista();
+        }
+        catch(Exception){
+          Console.WriteLine("SEU ARMARIO ESTA VAZIO!");
+        }
         break;
 
         //Simula itens que foram jogados para a lixeira
         case "4":
-        lixeira.SaidaLixeira();
+        try{
+          armario.AdicionarItens();
+          lixeira.SaidaLixeira();
+        }
+        catch(Exception){
+          Console.WriteLine("VOCÊ NÃO PODE FAZER ESTA AÇÃO, POIS SEU ARMARIO ESTA VAZIO!");
+        }
         break;
 
         //Limpa o console
@@ -107,14 +118,14 @@ class MainClass {
 
         //Sai do programa
         case "6":
-        Console.WriteLine("Saindo...");
+        Console.WriteLine("SAINDO...");
         item.DeletarArquivos();
         repetir = false;
         break;
 
         //Caso não seja nenhuma das opções acima
         default:
-        Console.WriteLine("Opção invalida...");
+        Console.WriteLine("OPÇÃO INVALIDA...");
         break;
       }
     }  

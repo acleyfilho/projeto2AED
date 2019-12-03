@@ -7,8 +7,6 @@ public class Item{
   private string nome;
   private int qtdMin;
   private int qtdAtual;
-
-  Sensor sensor = new Sensor();
   
   public Item(){
 
@@ -61,10 +59,10 @@ public class Item{
     string str2 = string.Empty;
     string resposta;
     bool repetir = true;
-    int qtdAtualAux = sensor.leitorArmario();
     int i = 0;
     
     while(repetir == true){
+      int qtdAtualAux = Sensor.leitorArmario();
       if(i == 0){
         Console.WriteLine("CADASTRO DE ITENS\n");
         Console.WriteLine("Escreva o item que deseja:");

@@ -7,49 +7,40 @@ public class Armario{
 
   List<Item> itens = new List<Item>();
 
-  Sensor sensor = new Sensor();
-
   public List<Item> AdicionarItens(){
 
     itens.Clear();
+    
+    FileStream meuArq = new FileStream("itens.txt", FileMode.Open, FileAccess.Read);
 
-    if(File.Exists("itens.txt") && File.Exists("qtdAtual.txt")){
-      FileStream meuArq = new FileStream("itens.txt", FileMode.Open, FileAccess.Read);
+    StreamReader sr = new StreamReader(meuArq, Encoding.UTF8);
 
-      StreamReader sr = new StreamReader(meuArq, Encoding.UTF8);
+    FileStream meuArq2 = new FileStream("qtdAtual.txt", FileMode.Open, FileAccess.Read);
 
-      FileStream meuArq2 = new FileStream("qtdAtual.txt", FileMode.Open, FileAccess.Read);
+    StreamReader sr2 = new StreamReader(meuArq2, Encoding.UTF8);
 
-      StreamReader sr2 = new StreamReader(meuArq2, Encoding.UTF8);
+    while(!sr.EndOfStream){
 
-      if(meuArq.Length == 0){
-        Console.WriteLine("SEU ARMARIO ESTA VAZIO!");
-      }else{
-        while(!sr.EndOfStream){
+      string str = sr.ReadLine();
+      string str2 = sr2.ReadLine();
+      string nomeAux;
+      int qtdMinAux;
+      int qtdAtualAux;
 
-          string str = sr.ReadLine();
-          string str2 = sr2.ReadLine();
-          string nomeAux;
-          int qtdMinAux;
-          int qtdAtualAux;
+      nomeAux = String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[\d| -]"));
 
-          nomeAux = String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[\d| -]"));
+      qtdMinAux = int.Parse(String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[^\d]")));
 
-          qtdMinAux = int.Parse(String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[^\d]")));
-
-          qtdAtualAux = int.Parse(str2);
-          
-          itens.Add(new Item(nomeAux, qtdMinAux, qtdAtualAux));
-        }
-      }
-      sr.Close();
-      meuArq.Close();
-      sr2.Close();
-      meuArq2.Close();
+      qtdAtualAux = int.Parse(str2);
+      
+      itens.Add(new Item(nomeAux, qtdMinAux, qtdAtualAux));
     }
-    else{
-      Console.WriteLine("SEU ARMARIO ESTA VAZIO!");
-    }
+      
+    sr.Close();
+    meuArq.Close();
+    sr2.Close();
+    meuArq2.Close();
+    
     return itens;
   }
 
