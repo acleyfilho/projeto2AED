@@ -11,11 +11,11 @@ public class Armario{
 
     itens.Clear();
     
-    FileStream meuArq = new FileStream("itens.txt", FileMode.Open, FileAccess.Read);
+    FileStream meuArq = new FileStream("itensArmario.txt", FileMode.Open, FileAccess.Read);
 
     StreamReader sr = new StreamReader(meuArq, Encoding.UTF8);
 
-    FileStream meuArq2 = new FileStream("qtdAtual.txt", FileMode.Open, FileAccess.Read);
+    FileStream meuArq2 = new FileStream("qtdAtualArmario.txt", FileMode.Open, FileAccess.Read);
 
     StreamReader sr2 = new StreamReader(meuArq2, Encoding.UTF8);
 
@@ -27,7 +27,7 @@ public class Armario{
       int qtdMinAux;
       int qtdAtualAux;
 
-      nomeAux = String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[\d| -]"));
+      nomeAux = String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[\d|-]"));
 
       qtdMinAux = int.Parse(String.Join("", System.Text.RegularExpressions.Regex.Split(str, @"[^\d]")));
 
@@ -46,11 +46,11 @@ public class Armario{
 
   public void MostrarLista(){
 
-    if(File.Exists("itens.txt") && File.Exists("qtdAtual.txt")){
+    if(File.Exists("itensArmario.txt") && File.Exists("qtdAtualArmario.txt")){
 
-      File.Delete("qtdAtual.txt");
+      File.Delete("qtdAtualArmario.txt");
 
-      StreamWriter sw = new StreamWriter("qtdAtual.txt", true);
+      StreamWriter sw = new StreamWriter("qtdAtualArmario.txt", true);
     
       List<Item> lis = new List<Item>();
 
@@ -94,9 +94,9 @@ public class Armario{
       }
       if(lis.Count < itens.Count){
 
-        File.Delete("qtdAtual.txt");
+        File.Delete("qtdAtualArmario.txt");
 
-        StreamWriter sw2 = new StreamWriter("qtdAtual.txt", true);
+        StreamWriter sw2 = new StreamWriter("qtdAtualArmario.txt", true);
         
         foreach (Item i in itens){
 

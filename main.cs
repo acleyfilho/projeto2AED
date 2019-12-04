@@ -35,10 +35,13 @@ class MainClass {
     bool repetir = true;
 
     Armario armario = new Armario();
+    Geladeira geladeira = new Geladeira();
     Item item = new Item();
     Lixeira lixeira = new Lixeira();
 
     while(repetir == true){
+
+      Console.WriteLine("\nUsuario: " + (Pessoa.username = nome));
 
       Console.WriteLine(" ");
 
@@ -56,15 +59,19 @@ class MainClass {
 
       Console.WriteLine("║                                        ║    ");
 
-      Console.WriteLine("║ 4 - JOGAR ITEM NO LIXO                 ║    ");
+      Console.WriteLine("║ 4 - CHECAR GELADEIRA                   ║    ");
 
       Console.WriteLine("║                                        ║    ");
 
-      Console.WriteLine("║ 5 - LIMPAR CONSOLE                     ║    ");
+      Console.WriteLine("║ 5 - JOGAR ITEM NO LIXO                 ║    ");
+
+      Console.WriteLine("║                                        ║    ");
+
+      Console.WriteLine("║ 6 - LIMPAR CONSOLE                     ║    ");
       
       Console.WriteLine("║                                        ║    ");
 
-      Console.WriteLine("║ 6 - SAIR                               ║    ");
+      Console.WriteLine("║ 7 - SAIR                               ║    ");
 
       Console.WriteLine("╚════════════════════════════════════════╝    ");
 
@@ -100,24 +107,29 @@ class MainClass {
         }
         break;
 
-        //Simula itens que foram jogados para a lixeira
+        //Lê uma lista de itens e adciona a geladeira
         case "4":
         try{
-          armario.AdicionarItens();
-          lixeira.SaidaLixeira();
+          geladeira.AdicionarItens();
+          geladeira.SaidaLista();
         }
         catch(Exception){
-          Console.WriteLine("VOCÊ NÃO PODE FAZER ESTA AÇÃO, POIS SEU ARMARIO ESTA VAZIO!");
+          Console.WriteLine("SUA GELADEIRA ESTA VAZIA!");
         }
         break;
 
-        //Limpa o console
+        //Simula itens que foram jogados para a lixeira
         case "5":
+        lixeira.SaidaLixeira();
+        break;
+
+        //Limpa o console
+        case "6":
         Console.Clear();
         break;
 
         //Sai do programa
-        case "6":
+        case "7":
         Console.WriteLine("SAINDO...");
         item.DeletarArquivos();
         repetir = false;

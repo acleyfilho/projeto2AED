@@ -6,6 +6,7 @@ public class Pessoa{
   private string senha;
   private string telefone;
   private string email;
+  public static string username;
   
   public Pessoa(){
 
@@ -55,7 +56,7 @@ public class Pessoa{
     email = e;
   }
 
-   public override string ToString(){
+  public override string ToString(){
     return string.Format("Nome: {0}\nSenha: {1}\nTelefone: {2}\nEmail: {3}",nome,senha,telefone,email);
   }
 
