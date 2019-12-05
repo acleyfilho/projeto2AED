@@ -17,21 +17,6 @@ class MainClass {
 
     Console.WriteLine("Digite seu nome: ");
     nome = Console.ReadLine();
-    while(true){
-      try{
-      if (nome.Length <= 3){
-        throw new Exception("Nome inválido!");
-      }
-      else{
-        break;
-      }
-      }
-
-      catch(Exception){
-        Console.WriteLine("Nome inválido!");
-        continue;
-      }
-    }
   
     Console.WriteLine("Digite sua senha: ");
     senha = Console.ReadLine();
@@ -55,8 +40,12 @@ class MainClass {
     Lixeira lixeira = new Lixeira();
 
     while(repetir == true){
+      //Mostra o username
+      Console.WriteLine("\n══════════════════════════════════════════    ");
 
-      Console.WriteLine("\nUsuario: " + (Pessoa.username = nome));
+      Console.WriteLine(" Usuario: " + (Pessoa.username = nome));
+
+      Console.WriteLine("══════════════════════════════════════════    ");
 
       Console.WriteLine(" ");
 
@@ -145,7 +134,7 @@ class MainClass {
 
         //Sai do programa
         case "7":
-        Console.WriteLine("SAINDO...");
+        Console.WriteLine("FINALIZADO COM SUCESSO!");
         item.DeletarArquivos();
         repetir = false;
         break;

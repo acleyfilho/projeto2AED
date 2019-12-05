@@ -92,13 +92,13 @@ public class Geladeira{
             i.setQtdAtual(qtdAtualAux);
             sw.WriteLine(qtdAtualAux);
             lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
-            Console.WriteLine("Quantidade comprada com sucesso!");
+            Console.WriteLine("\nQuantidade comprada com sucesso!");
             Console.WriteLine(i);
           }
           else{
             sw.WriteLine(qtdAtualAux);
             lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
-            Console.WriteLine("Esse item não tera reposição!");
+            Console.WriteLine("\nEsse item não tera reposição!");
           }
         }
       }
