@@ -5,11 +5,11 @@ using System.Text;
 
 public class Armario{
 
-  List<Item> itens = new List<Item>();
+  List<ItemArmario> itensArmario = new List<ItemArmario>();
 
-  public List<Item> AdicionarItens(){
+  public List<ItemArmario> AdicionarItens(){
 
-    itens.Clear();
+    itensArmario.Clear();
     
     FileStream meuArq = new FileStream("itensArmario.txt", FileMode.Open, FileAccess.Read);
 
@@ -33,7 +33,7 @@ public class Armario{
 
       qtdAtualAux = int.Parse(str2);
       
-      itens.Add(new Item(nomeAux, qtdMinAux, qtdAtualAux));
+      itensArmario.Add(new ItemArmario(nomeAux, qtdMinAux, qtdAtualAux));
     }
       
     sr.Close();
@@ -41,7 +41,7 @@ public class Armario{
     sr2.Close();
     meuArq2.Close();
     
-    return itens;
+    return itensArmario;
   }
 
   public void MostrarLista(){
@@ -54,7 +54,7 @@ public class Armario{
     
       List<Item> lis = new List<Item>();
 
-      foreach (Item i in itens){
+      foreach (Item i in itensArmario){
 
         string resposta;
         int qtdMinAux;
@@ -66,15 +66,18 @@ public class Armario{
 
         if(qtdAtualAux > qtdMinAux){
           Console.WriteLine(i);
+          Console.WriteLine("------------------------------------------");
         }
         else{
           Console.WriteLine(i);
-          Console.WriteLine("Esse item precisa de reposição!");
-          Console.Write("Dejesa comprar esse item(S|N)? ");
+          Console.ForegroundColor = ConsoleColor.Yellow;
+          Console.WriteLine("\nEsse item precisa de reposição!");
+          Console.ForegroundColor = ConsoleColor.White; 
+          Console.Write("\nDejesa comprar esse item(S|N)? ");
           resposta = Console.ReadLine();
           if(resposta == "S" || resposta == "s"){
 
-            Console.WriteLine("Digite a quantidade que deseja comprar:");
+            Console.WriteLine("\nDigite a quantidade que deseja comprar:");
             qtdDesejada = int.Parse(Console.ReadLine());
 
             qtdAtualAux = qtdAtualAux + qtdDesejada;
@@ -82,23 +85,29 @@ public class Armario{
             i.setQtdAtual(qtdAtualAux);
             sw.WriteLine(qtdAtualAux);
             lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nQuantidade comprada com sucesso!");
+            Console.ForegroundColor = ConsoleColor.White; 
             Console.WriteLine(i);
+            Console.WriteLine("------------------------------------------");
           }
           else{
             sw.WriteLine(qtdAtualAux);
             lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\nEsse item não tera reposição!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("------------------------------------------"); 
           }
         }
       }
-      if(lis.Count < itens.Count){
+      if(lis.Count < itensArmario.Count){
 
         File.Delete("qtdAtualArmario.txt");
 
         StreamWriter sw2 = new StreamWriter("qtdAtualArmario.txt", true);
         
-        foreach (Item i in itens){
+        foreach (Item i in itensArmario){
 
           sw2.WriteLine(i.getQtdAtual());
         }
@@ -110,7 +119,7 @@ public class Armario{
 
   public void SaidaLista(){
     Console.WriteLine("\n║║║║║║║║║║║║║═>SEU ARMARIO<═║║║║║║║║║║║║║║");
-    MostrarLista();
     Console.WriteLine("\n------------------------------------------");
+    MostrarLista();
   }
 }

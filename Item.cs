@@ -45,10 +45,6 @@ public class Item{
   public void setQtdAtual(int qa){
     qtdAtual = qa;
   }
-
-  public override string ToString(){
-    return "\nItem: " + nome + "\nQuantidade Minima: " + qtdMin + "\nQuantidade Atual: " + qtdAtual;
-  }
   
   public void EscreverItem(){
 

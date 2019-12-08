@@ -15,8 +15,23 @@ class MainClass {
 
     Console.WriteLine("CADASTRO INICIAL\n");
 
-    Console.WriteLine("Digite seu nome: ");
-    nome = Console.ReadLine();
+    while(true){
+      Console.WriteLine("Digite seu nome: ");
+      nome = Console.ReadLine();
+
+      try{
+        if (nome.Length <= 3){
+          throw new Exception("Nome inválido!");
+        }
+        else{
+          break;
+        }
+      }
+      catch(Exception){
+        Console.WriteLine("Nome inválido!");
+        continue;
+      }
+    }
   
     Console.WriteLine("Digite sua senha: ");
     senha = Console.ReadLine();

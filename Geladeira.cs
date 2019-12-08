@@ -76,15 +76,18 @@ public class Geladeira{
 
         if(qtdAtualAux > qtdMinAux){
           Console.WriteLine(i);
+          Console.WriteLine("------------------------------------------"); 
         }
         else{
           Console.WriteLine(i);
-          Console.WriteLine("Esse item precisa de reposição!");
-          Console.Write("Dejesa comprar esse item(S|N)? ");
+          Console.ForegroundColor = ConsoleColor.Yellow;
+          Console.WriteLine("\nEsse item precisa de reposição!");
+          Console.ForegroundColor = ConsoleColor.White;
+          Console.Write("\nDejesa comprar esse item(S|N)? ");
           resposta = Console.ReadLine();
           if(resposta == "S" || resposta == "s"){
 
-            Console.WriteLine("Digite a quantidade que deseja comprar:");
+            Console.WriteLine("\nDigite a quantidade que deseja comprar:");
             qtdDesejada = int.Parse(Console.ReadLine());
 
             qtdAtualAux = qtdAtualAux + qtdDesejada;
@@ -92,13 +95,19 @@ public class Geladeira{
             i.setQtdAtual(qtdAtualAux);
             sw.WriteLine(qtdAtualAux);
             lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nQuantidade comprada com sucesso!");
+            Console.ForegroundColor = ConsoleColor.White; 
             Console.WriteLine(i);
+            Console.WriteLine("------------------------------------------"); 
           }
           else{
             sw.WriteLine(qtdAtualAux);
             lis.Add(new Item(i.getNome(), qtdMinAux, qtdAtualAux));
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\nEsse item não tera reposição!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("------------------------------------------");  
           }
         }
       }
@@ -119,8 +128,8 @@ public class Geladeira{
   }
 
   public void SaidaLista(){
-    Console.WriteLine("\n║║║║║║║║║║║║║═>SUA GELADEIRA<═║║║║║║║║║║║║║║");
-    MostrarLista();
+    Console.WriteLine("\n║║║║║║║║║║║║═>SUA GELADEIRA<═║║║║║║║║║║║║║");
     Console.WriteLine("\n------------------------------------------");
+    MostrarLista();
   }
 }
