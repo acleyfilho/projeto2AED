@@ -32,15 +32,69 @@ class MainClass {
         continue;
       }
     }
+
+
+
+    while(true){
+      Console.WriteLine("Digite sua senha: ");
+      senha = Console.ReadLine();
+
+      try{
+        if (senha.Length < 6){
+          throw new Exception("Senha menor do que 6 dígitos!");
+        }
+        else{
+          break;
+        }
+      }
+      catch(Exception){
+        Console.WriteLine("Senha menor do que 6 dígitos!");
+        continue;
+      }
+    }
+
+
+
+    while(true){
+      Console.WriteLine("Digite seu telefone:");
+      telefone = Console.ReadLine();
+
+      try{
+        if (telefone.Length < 8){
+          throw new Exception("E-mail inválido!");
+        }
+        else{
+          break;
+        }
+      }
+      catch(Exception){
+        Console.WriteLine("E-mail inválido!");
+        continue;
+      }
+    }
+
+
+
+    while(true){
+      Console.WriteLine("Digite seu email: ");
+      email = Console.ReadLine();
+
+      try{
+        int indexEmail = email.IndexOf('@');
+        if (indexEmail == -1){
+          throw new Exception("E-mail inválido!");
+        }
+        else{
+          break;
+        }
+      }
+      catch(Exception){
+        Console.WriteLine("E-mail inválido!");
+        continue;
+      }
+    }
   
-    Console.WriteLine("Digite sua senha: ");
-    senha = Console.ReadLine();
 
-    Console.WriteLine("Digite seu telefone: ");
-    telefone = Console.ReadLine();
-
-    Console.WriteLine("Digite seu email: ");
-    email = Console.ReadLine();
 
     Pessoa cadastro = new Pessoa(nome, senha, telefone, email);
     Console.Clear();
